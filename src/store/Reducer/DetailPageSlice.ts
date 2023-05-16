@@ -5,14 +5,14 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 // Detail Page -> Partial<IDetail>
 
 
-interface IUser {
-    actors: Partial<IDetail>
+interface IUsersDetail {
+    detail: Partial<IDetail>
     loader: boolean
     error: string
 }
 
-const initialState: IUser = {
-    actors: {},
+const initialState: IUsersDetail = {
+    detail: {},
     loader: false,
     error: ''
 }
@@ -25,13 +25,13 @@ export const detailSlice = createSlice({
             state.loader = true
         },
         fetchingDetailSuccess(state, action: PayloadAction<IDetail>) {
-            state.actors = action.payload
+            state.detail = action.payload
             state.loader = false
             state.error = ''
         },
         fetchingDetailError(state, action: PayloadAction<string>) {
             state.loader = false
-            state.actors = {}
+            state.detail = {}
             state.error = action.payload
         }
     }
